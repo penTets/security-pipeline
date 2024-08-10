@@ -36,7 +36,7 @@ jobs:
         SSH_USER: ${{ secrets.SSH_USER }}
         SERVER_IP: ${{ secrets.SERVER_IP }}
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} /bin/bash << 'EOF'
           docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/security-cicd:latest
           docker stop security_pipeline || true
           docker rm security_pipeline || true
