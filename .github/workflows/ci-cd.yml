@@ -36,7 +36,7 @@ jobs:
         SSH_USER: ${{ secrets.SSH_USER }}
         SERVER_IP: ${{ secrets.SERVER_IP }}
       run: |
-        ssh pentets@192.168.146.130 << 'EOF'
+        ssh pentets_application@192.168.146.130 << 'EOF'
           docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/security-cicd:latest
           docker stop security_pipeline || true
           docker rm security_pipeline || true
