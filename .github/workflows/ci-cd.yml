@@ -36,5 +36,10 @@ jobs:
         SSH_USER: ${{ secrets.SSH_USER }}
         SERVER_IP: ${{ secrets.SERVER_IP }}
       run: |
-        echo "Deployment successful!"
+        ssh pentets@192.168.146.130 << 'EOF'
+          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/security-cicd:latest
+          docker stop security_pipeline || true
+          docker rm security_pipeline || true
+          docker run -d -p 80:80 --name security_pipline ${{ secrets.DOCKER_HUB_USERNAME }}/security-cicd:latest
+        EOF
         
