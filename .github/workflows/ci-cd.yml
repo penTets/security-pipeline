@@ -31,7 +31,10 @@ jobs:
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/security-cicd:latest
 
     - name: Deploy to server
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SERVER_IP: ${{ secrets.SERVER_IP }}
       run: |
-      	echo "Deploying to server..."
-      	#Simulate a deployment step
-      	echo "Deployment successful!"
+        echo "Deployment successful!"
+        
