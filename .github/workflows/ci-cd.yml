@@ -4,17 +4,9 @@ on: [push]
 
 jobs:
   test-ssh:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up SSH key
+      - name: Print Test message
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa_github
-          chmod 600 ~/.ssh/id_rsa_github
-
-      - name: Test SSH Connection
-        run: |
-          ssh -o StrictHostKeyChecking=no -v pentets_application@122.162.146.214 'echo "SSH connection successful"'
+          echo "Runner is working" 
+          
