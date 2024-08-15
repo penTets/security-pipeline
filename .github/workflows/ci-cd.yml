@@ -29,10 +29,6 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/security-cicd:latest
-
-    - name: List workspace contents
-      run: |
-        ls -al ${{ github.workspace }}
 	  
     - name: Deploy to Localhost
       run: |
