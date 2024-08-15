@@ -1,5 +1,6 @@
 <?php
 
-echo 'Hello world!';
+echo 'Hello world!\n';
+echo 'Dastardly Added';
 
 ?>

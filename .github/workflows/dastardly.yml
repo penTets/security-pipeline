@@ -1,0 +1,23 @@
+name: Run Dastardly
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dastardly_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Dastardly
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/app \
+          dastardlyci/dastardly:latest
