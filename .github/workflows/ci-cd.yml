@@ -30,8 +30,8 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/security-cicd:latest
 
-    - name: List Workspace Contents
-      run: whoami
+    - name: WHOAMI
+      run: sudo whoami
 
     - name: Deploy to Localhost
       run: |
