@@ -1,6 +1,6 @@
 <?php
 
 echo 'Hello world!\n';
-echo 'Dastardly Added';
+echo 'Trying to deploy to the localhost';
 
 ?>
