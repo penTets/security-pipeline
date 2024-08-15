@@ -29,10 +29,13 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/security-cicd:latest
-	  
+
+    - name: List Workspace Contents
+      run: ls -al $GITHUB_WORKSPACE
+
     - name: Deploy to Localhost
       run: |
-        sudo cp -r $GITHUB_WORKSPACE/* /var/www/html/
+        sudo cp -r * /var/www/html/
         sudo chown -R www-data:www-data /var/www/html/
         sudo systemctl restart apache2
         
