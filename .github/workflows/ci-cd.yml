@@ -33,7 +33,7 @@ jobs:
     - name:
     - name: Deploy to Localhost
       run: |
-        sudo cp -r ${{ github.workspace }}/build/* /var/www/html/
+        sudo cp -r * /var/www/html/
         sudo chown -R www-data:www-data /var/www/html/
         sudo systemctl restart apache2
         
