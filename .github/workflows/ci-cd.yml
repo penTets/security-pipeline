@@ -14,8 +14,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: IFCONFIG
-      run: ifconfig
+    - name: WHOAMI
+      run: whoami
 
     - name: Deploy to Localhost
       run: |
@@ -26,5 +26,5 @@ jobs:
         
     - name: Verify Deployment
       run: |
-        curl http://localhost
+        curl http://localhost/index.php
         
