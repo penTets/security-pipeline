@@ -14,8 +14,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: WHOAMI
-      run: whoami
+    - name: IFCONFIG
+      run: ifconfig
 
     - name: Deploy to Localhost
       run: |
