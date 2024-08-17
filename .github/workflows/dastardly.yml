@@ -1,25 +1,20 @@
-name: Dastardly Scan
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  dastardly-scan:
-    runs-on: self-hosted
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Run Dastardly Scan
-      run: |
-        sudo docker run --rm -v ${{ github.workspace }}:/app dastardlyhq/dastardly \
-          http://host.docker.internal --report-xml=/app/dastardly-report.xml
-
-    - name: Upload Dastardly Report
-      uses: actions/upload-artifact@v2
-      with:
-        name: dastardly-report
-        path: dastardly-report.xml
+name: 'Dastardly Scan Action'
+description: 'Runs a Dastardly scan against a target site'
+author: 'PortSwigger'
+inputs:
+  target-url: 'http://localhost'
+    description: 'The full url (including scheme) of the site to scan'
+    required: true
+  output-filename:
+    description: 'The filename used for the scan report. This filepath relates to the dastardly container, and will exist in the github workspace (/github/workspace)'
+    required: false
+    default: dastardly-report.xml
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    BURP_START_URL: ${{ inputs.target-url }}
+    BURP_REPORT_FILE_PATH: /github/workspace/${{ inputs.output-filename }}
+branding:
+  icon: 'activity'
+  color: 'green'
