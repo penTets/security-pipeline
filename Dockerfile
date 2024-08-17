@@ -14,4 +14,4 @@ CMD ["apache2-foreground"]
 #Dastardly
 FROM public.ecr.aws/portswigger/dastardly:latest
 
-USER pentets_cicd
+USER root
