@@ -9,3 +9,9 @@ EXPOSE 80
 
 #Start Apache in the foreground
 CMD ["apache2-foreground"]
+
+
+#Dastardly
+FROM public.ecr.aws/portswigger/dastardly:latest
+
+USER root

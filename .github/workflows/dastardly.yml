@@ -1,0 +1,25 @@
+name: Dastardly Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dastardly-scan:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run Dastardly Scan
+      run: |
+        docker run --rm -v ${{ github.workspace }}:/app dastardlyhq/dastardly \
+          http://host.docker.internal --report-xml=/app/dastardly-report.xml
+
+    - name: Upload Dastardly Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: dastardly-report
+        path: dastardly-report.xml
