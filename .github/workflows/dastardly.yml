@@ -15,7 +15,7 @@ jobs:
 
     - name: Run Dastardly Scan
       run: |
-        docker run --rm -v ${{ github.workspace }}:/app dastardlyhq/dastardly \
+        sudo docker run --rm -v ${{ github.workspace }}:/app dastardlyhq/dastardly \
           http://host.docker.internal --report-xml=/app/dastardly-report.xml
 
     - name: Upload Dastardly Report
