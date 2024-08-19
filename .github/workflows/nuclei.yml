@@ -15,7 +15,7 @@ jobs:
 
       - name: Run Nuclei Scan
         run: |
-          nuclei -u http://localhost -o nuclei-output.txt
+          nuclei -u http://localhost -o ./nuclei-output.txt
 
       - name: Upload Nuclei Scan Results
         uses: actions/upload-artifact@v3
