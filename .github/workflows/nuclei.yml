@@ -1,0 +1,24 @@
+name: Nuclei Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  nuclei-scan:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Nuclei Scan
+        run: |
+          nuclei -u http://localhost -o nuclei-output.txt
+
+      - name: Upload Nuclei Scan Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: nuclei-scan-results
+          path: nuclei-output.txt
